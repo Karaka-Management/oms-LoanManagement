@@ -5,21 +5,21 @@
         "type": 2,
         "subtype": 1,
         "name": "Investment",
-        "uri": "{/prefix}controlling/investment/dashboard?{?}",
+        "uri": "{/prefix}finance/investment/dashboard?{?}",
         "target": "self",
         "icon": null,
         "order": 1,
         "from": "InvestmentManagement",
         "permission": { "permission": 2, "type": null, "element": null },
-        "parent": 1002801001,
+        "parent": 1008101001,
         "children": [
             {
                 "id": 1007102001,
-                "pid": "/controlling/investment",
+                "pid": "/finance/investment",
                 "type": 3,
                 "subtype": 1,
                 "name": "Dashboard",
-                "uri": "{/prefix}controlling/investment/dashboard?{?}",
+                "uri": "{/prefix}finance/investment/dashboard?{?}",
                 "target": "self",
                 "icon": null,
                 "order": 1,
@@ -29,5 +29,20 @@
                 "children": []
             }
         ]
+    },
+    {
+        "id": 1007103001,
+        "pid": "/",
+        "type": 2,
+        "subtype": 1,
+        "name": "PurchaseInquiries",
+        "uri": "{/lang}/{/app}/private/investment?{?}",
+        "target": "self",
+        "icon": null,
+        "order": 10,
+        "from": "InvestmentManagement",
+        "permission": { "permission": 2, "category": null, "element": null },
+        "parent": 1003401001,
+        "children": []
     }
 ]

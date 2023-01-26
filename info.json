@@ -17,7 +17,7 @@
     "description": "Investment Management module.",
     "directory": "InvestmentManagement",
     "dependencies": {
-        "Controlling": "*"
+        "Finance": "*"
     },
     "providing": {
         "Navigation": "*"
@@ -25,7 +25,7 @@
     "load": [
         {
             "pid": [
-                "/controlling/investment"
+                "/finance/investment"
             ],
             "type": 4,
             "for": 0,

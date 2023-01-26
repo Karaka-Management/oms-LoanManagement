@@ -1,0 +1,92 @@
+{
+    "investmgmt_investment": {
+        "name": "investmgmt_investment",
+        "fields": {
+            "investmgmt_investment_id": {
+                "name": "investmgmt_investment_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "investmgmt_investment_title": {
+                "name": "investmgmt_investment_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "investmgmt_investment_description": {
+                "name": "investmgmt_investment_description",
+                "type": "TEXT",
+                "null": false
+            },
+            "investmgmt_investment_created_by": {
+                "name": "investmgmt_investment_created_by",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "account",
+                "foreignKey": "account_id"
+            },
+            "investmgmt_investment_unit": {
+                "name": "investmgmt_investment_unit",
+                "type": "INT",
+                "default": null,
+                "null": true,
+                "foreignTable": "unit",
+                "foreignKey": "unit_id"
+            }
+        }
+    },
+    "investmgmt_investment_option": {
+        "name": "investmgmt_investment_option",
+        "fields": {
+            "investmgmt_investment_option_id": {
+                "name": "investmgmt_investment_option_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "investmgmt_investment_option_description": {
+                "name": "investmgmt_investment_option_description",
+                "type": "TEXT",
+                "null": false
+            },
+            "investmgmt_investment_option_price": {
+                "name": "investmgmt_investment_option_price",
+                "type": "BIGINT",
+                "null": false
+            },
+            "investmgmt_investment_option_investment": {
+                "name": "investmgmt_investment_option_investment",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "investmgmt_investment",
+                "foreignKey": "investmgmt_investment_id"
+            },
+            "investmgmt_investment_option_supplier": {
+                "name": "investmgmt_investment_option_supplier",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "suppliermgmt_supplier",
+                "foreignKey": "suppliermgmt_supplier_id"
+            },
+            "investmgmt_investment_option_supplier_alt": {
+                "name": "investmgmt_investment_option_supplier_alt",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "investmgmt_investment_option_item": {
+                "name": "investmgmt_investment_option_item",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "itemmgmt_item",
+                "foreignKey": "itemmgmt_item_id"
+            },
+            "investmgmt_investment_option_item_alt": {
+                "name": "investmgmt_investment_option_item_alt",
+                "type": "VARCHAR(255)",
+                "null": false
+            }
+        }
+    }
+}
