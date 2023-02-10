@@ -17,7 +17,8 @@
     "description": "Investment Management module.",
     "directory": "InvestmentManagement",
     "dependencies": {
-        "Finance": "*"
+        "Finance": "*",
+        "SupplierManagement": "*"
     },
     "providing": {
         "Navigation": "*"
