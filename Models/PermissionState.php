@@ -6,7 +6,7 @@
  *
  * @package   Modules\InvestmentManagement\Models
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://orange-management.org
  */
@@ -20,7 +20,7 @@ use phpOMS\Stdlib\Base\Enum;
  * Permision state enum.
  *
  * @package Modules\InvestmentManagement\Models
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://orange-management.org
  * @since   1.0.0
  */

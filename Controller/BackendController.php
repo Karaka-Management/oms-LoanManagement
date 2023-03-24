@@ -6,7 +6,7 @@
  *
  * @package   Modules\InvestmentManagement
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://orange-management.org
  */
@@ -23,7 +23,7 @@ use phpOMS\Views\View;
  * Investmenting controller class.
  *
  * @package Modules\InvestmentManagement
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://orange-management.org
  * @since   1.0.0
  */
