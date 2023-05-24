@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use Modules\InvestmentManagement\Controller\BackendController;
-use Modules\InvestmentManagement\Models\PermissionState;
+use Modules\InvestmentManagement\Models\PermissionCategory;
 use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
@@ -13,7 +13,7 @@ return [
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'  => PermissionType::READ,
-                'state' => PermissionState::INVESTMENT,
+                'state' => PermissionCategory::INVESTMENT,
             ],
         ],
     ],
