@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php 
+declare(strict_types=1);
 
 use phpOMS\Business\Finance\DepreciationType;
 use phpOMS\Stdlib\Base\FloatInt;
 
-class Money {
+class Money
+{
     public int $id = 0;
 
     public string $name = '';
