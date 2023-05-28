@@ -1,6 +1,4 @@
-<?php
-
-use phpOMS\Business\Finance\DepreciationType;
+<?php declare(strict_types=1);
 
 class InvestmentObject
 {

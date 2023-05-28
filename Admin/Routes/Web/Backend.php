@@ -8,12 +8,12 @@ use phpOMS\Router\RouteVerb;
 return [
     '^.*/controlling/investment/dashboard.*$' => [
         [
-            'dest' => '\Modules\InvestmentManagement\Controller\BackendController:viewInvestmentDashboard',
-            'verb' => RouteVerb::GET,
+            'dest'       => '\Modules\InvestmentManagement\Controller\BackendController:viewInvestmentDashboard',
+            'verb'       => RouteVerb::GET,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
-                'type'  => PermissionType::READ,
-                'state' => PermissionCategory::INVESTMENT,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::INVESTMENT,
             ],
         ],
     ],
