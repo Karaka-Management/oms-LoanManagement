@@ -1,4 +1,4 @@
-<?php 
+<?php
 declare(strict_types=1);
 
 use phpOMS\Localization\BaseStringL11n;
