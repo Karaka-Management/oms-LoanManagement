@@ -1,10 +1,10 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
- * @package   Modules\HumanResourceTimeRecording
+ * @package   Modules\LoanManagement
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0

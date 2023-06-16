@@ -1,10 +1,10 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
- * @package   Modules\InvestmentManagement
+ * @package   Modules\LoanManagement
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,15 +12,15 @@
  */
 declare(strict_types=1);
 
-namespace Modules\InvestmentManagement\Controller;
+namespace Modules\LoanManagement\Controller;
 
 use phpOMS\Module\ModuleAbstract;
 use phpOMS\Module\WebInterface;
 
 /**
- * Investmenting controller class.
+ * Loan controller class.
  *
- * @package Modules\InvestmentManagement
+ * @package Modules\LoanManagement
  * @license OMS License 2.0
  * @link    https://orange-management.org
  * @since   1.0.0
@@ -49,7 +49,7 @@ class Controller extends ModuleAbstract implements WebInterface
      * @var string
      * @since 1.0.0
      */
-    public const MODULE_NAME = 'InvestmentManagement';
+    public const MODULE_NAME = 'LoanManagement';
 
     /**
      * Module id.
@@ -57,7 +57,7 @@ class Controller extends ModuleAbstract implements WebInterface
      * @var int
      * @since 1.0.0
      */
-    public const MODULE_ID = 1007100000;
+    public const MODULE_ID = 1008300000;
 
     /**
      * Providing.

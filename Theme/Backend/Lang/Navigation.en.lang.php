@@ -1,6 +1,6 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
@@ -13,6 +13,6 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Dashboard'  => 'Dashboard',
-    'Investment' => 'Investment',
+    'List'  => 'List',
+    'Loan' => 'Loan',
 ]];

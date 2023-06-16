@@ -1,48 +1,33 @@
 [
     {
-        "id": 1007101001,
+        "id": 1008301001,
         "pid": "/",
         "type": 2,
         "subtype": 1,
-        "name": "Investment",
-        "uri": "{/prefix}finance/investment/dashboard?{?}",
+        "name": "Loan",
+        "uri": "{/base}finance/loan/list?{?}",
         "target": "self",
         "icon": null,
         "order": 1,
-        "from": "InvestmentManagement",
+        "from": "LoanManagement",
         "permission": { "permission": 2, "type": null, "element": null },
         "parent": 1008101001,
         "children": [
             {
-                "id": 1007102001,
-                "pid": "/finance/investment",
+                "id": 1008302001,
+                "pid": "/finance/loan",
                 "type": 3,
                 "subtype": 1,
-                "name": "Dashboard",
-                "uri": "{/prefix}finance/investment/dashboard?{?}",
+                "name": "List",
+                "uri": "{/base}finance/loan/list?{?}",
                 "target": "self",
                 "icon": null,
                 "order": 1,
-                "from": "InvestmentManagement",
+                "from": "LoanManagement",
                 "permission": { "permission": 2, "type": null, "element": null },
-                "parent": 1007101001,
+                "parent": 1008301001,
                 "children": []
             }
         ]
-    },
-    {
-        "id": 1007103001,
-        "pid": "/",
-        "type": 2,
-        "subtype": 1,
-        "name": "PurchaseInquiries",
-        "uri": "{/base}/private/investment?{?}",
-        "target": "self",
-        "icon": null,
-        "order": 10,
-        "from": "InvestmentManagement",
-        "permission": { "permission": 2, "category": null, "element": null },
-        "parent": 1003401001,
-        "children": []
     }
 ]

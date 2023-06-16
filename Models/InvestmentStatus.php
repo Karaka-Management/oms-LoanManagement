@@ -4,7 +4,7 @@
  *
  * PHP Version 8.1
  *
- * @package   Modules\InvestmentManagement\Models
+ * @package   Modules\LoanmentManagement\Models
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,19 +12,19 @@
  */
 declare(strict_types=1);
 
-namespace Modules\InvestmentManagement\Models;
+namespace Modules\LoanmentManagement\Models;
 
 use phpOMS\Stdlib\Base\Enum;
 
 /**
- * Investment status enum.
+ * Loanment status enum.
  *
- * @package Modules\InvestmentManagement\Models
+ * @package Modules\LoanmentManagement\Models
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
-abstract class InvestmentStatus extends Enum
+abstract class LoanStatus extends Enum
 {
     public const DRAFT = 1;
 

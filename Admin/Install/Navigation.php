@@ -1,10 +1,10 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
- * @package   Modules\InvestmentManagement\Admin\Install
+ * @package   Modules\LoanManagement\Admin\Install
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,14 +12,14 @@
  */
 declare(strict_types=1);
 
-namespace Modules\InvestmentManagement\Admin\Install;
+namespace Modules\LoanManagement\Admin\Install;
 
 use phpOMS\Application\ApplicationAbstract;
 
 /**
  * Navigation class.
  *
- * @package Modules\InvestmentManagement\Admin\Install
+ * @package Modules\LoanManagement\Admin\Install
  * @license OMS License 2.0
  * @link    https://orange-management.org
  * @since   1.0.0

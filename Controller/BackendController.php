@@ -1,10 +1,10 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
- * @package   Modules\InvestmentManagement
+ * @package   Modules\LoanManagement
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,7 +12,7 @@
  */
 declare(strict_types=1);
 
-namespace Modules\InvestmentManagement\Controller;
+namespace Modules\LoanManagement\Controller;
 
 use phpOMS\Contract\RenderableInterface;
 use phpOMS\Message\RequestAbstract;
@@ -20,9 +20,9 @@ use phpOMS\Message\ResponseAbstract;
 use phpOMS\Views\View;
 
 /**
- * Investmenting controller class.
+ * Loaning controller class.
  *
- * @package Modules\InvestmentManagement
+ * @package Modules\LoanManagement
  * @license OMS License 2.0
  * @link    https://orange-management.org
  * @since   1.0.0
@@ -41,10 +41,10 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function viewInvestmentDashboard(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    public function viewLoanList(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
-        $view->setTemplate('/Modules/InvestmentManagement/Theme/Backend/investment-dashboard');
+        $view->setTemplate('/Modules/LoanManagement/Theme/Backend/loan-list');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1004601001, $request, $response);
 
         return $view;

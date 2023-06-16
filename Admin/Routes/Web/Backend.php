@@ -1,19 +1,41 @@
 <?php declare(strict_types=1);
 
-use Modules\InvestmentManagement\Controller\BackendController;
-use Modules\InvestmentManagement\Models\PermissionCategory;
+use Modules\LoanManagement\Controller\BackendController;
+use Modules\LoanManagement\Models\PermissionCategory;
 use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/controlling/investment/dashboard.*$' => [
+    '^.*/controlling/loan/list.*$' => [
         [
-            'dest'       => '\Modules\InvestmentManagement\Controller\BackendController:viewInvestmentDashboard',
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanList',
             'verb'       => RouteVerb::GET,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'   => PermissionType::READ,
-                'state'  => PermissionCategory::INVESTMENT,
+                'state'  => PermissionCategory::LOAN,
+            ],
+        ],
+    ],
+    '^.*/controlling/loan/single.*$' => [
+        [
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanSingle',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::MODULE_NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::LOAN,
+            ],
+        ],
+    ],
+    '^.*/controlling/loan/create.*$' => [
+        [
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::MODULE_NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::LOAN,
             ],
         ],
     ],

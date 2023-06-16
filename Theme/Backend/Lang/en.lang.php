@@ -1,10 +1,10 @@
 <?php
 /**
- * Orange Management
+ * Karaka
  *
  * PHP Version 8.1
  *
- * @package   Modules\InvestmentManagement
+ * @package   Modules\LoanManagement
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,5 +12,5 @@
  */
 declare(strict_types=1);
 
-return ['InvestmentManagement' => [
+return ['LoanManagement' => [
 ]];
