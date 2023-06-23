@@ -4,7 +4,7 @@
  *
  * PHP Version 8.1
  *
- * @package   Modules\LoanmentManagement\Models
+ * @package   Modules\LoanManagement\Models
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,14 +12,14 @@
  */
 declare(strict_types=1);
 
-namespace Modules\LoanmentManagement\Models;
+namespace Modules\LoanManagement\Models;
 
 use phpOMS\Stdlib\Base\Enum;
 
 /**
  * Loanment status enum.
  *
- * @package Modules\LoanmentManagement\Models
+ * @package Modules\LoanManagement\Models
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
@@ -28,9 +28,7 @@ abstract class LoanStatus extends Enum
 {
     public const DRAFT = 1;
 
-    public const OPEN = 2;
+    public const ACTIVE = 2;
 
-    public const APPROVED = 3;
-
-    public const DENIED = 4;
+    public const INACTIVE = 3;
 }
