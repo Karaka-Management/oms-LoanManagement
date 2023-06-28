@@ -6,7 +6,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/controlling/loan/list.*$' => [
+    '^.*/finance/loan/list.*$' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanList',
             'verb'       => RouteVerb::GET,
@@ -17,7 +17,7 @@ return [
             ],
         ],
     ],
-    '^.*/controlling/loan/single.*$' => [
+    '^.*/finance/loan/single.*$' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanSingle',
             'verb'       => RouteVerb::GET,
@@ -28,7 +28,7 @@ return [
             ],
         ],
     ],
-    '^.*/controlling/loan/create.*$' => [
+    '^.*/finance/loan/create.*$' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanCreate',
             'verb'       => RouteVerb::GET,
