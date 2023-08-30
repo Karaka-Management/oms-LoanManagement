@@ -14,11 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Models;
 
-use Modules\Admin\Models\Account;
-use Modules\Admin\Models\NullAccount;
-use phpOMS\Business\Finance\DepreciationType;
-use phpOMS\Localization\BaseStringL11nType;
-
 /**
  * Loan model.
  *
