@@ -1,33 +1,33 @@
 {
     "loanmgmt_loan": {
-        "name": "investmgmt_investment",
+        "name": "loanmgmt_loan",
         "fields": {
-            "investmgmt_investment_id": {
-                "name": "investmgmt_investment_id",
+            "loanmgmt_loan_id": {
+                "name": "loanmgmt_loan_id",
                 "type": "INT",
                 "null": false,
                 "primary": true,
                 "autoincrement": true
             },
-            "investmgmt_investment_title": {
-                "name": "investmgmt_investment_title",
+            "loanmgmt_loan_title": {
+                "name": "loanmgmt_loan_title",
                 "type": "VARCHAR(255)",
                 "null": false
             },
-            "investmgmt_investment_description": {
-                "name": "investmgmt_investment_description",
+            "loanmgmt_loan_description": {
+                "name": "loanmgmt_loan_description",
                 "type": "TEXT",
                 "null": false
             },
-            "investmgmt_investment_created_by": {
-                "name": "investmgmt_investment_created_by",
+            "loanmgmt_loan_created_by": {
+                "name": "loanmgmt_loan_created_by",
                 "type": "INT",
                 "null": false,
                 "foreignTable": "account",
                 "foreignKey": "account_id"
             },
-            "investmgmt_investment_unit": {
-                "name": "investmgmt_investment_unit",
+            "loanmgmt_loan_unit": {
+                "name": "loanmgmt_loan_unit",
                 "type": "INT",
                 "default": null,
                 "null": true,

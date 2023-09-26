@@ -21,7 +21,9 @@
         "SupplierManagement": "*"
     },
     "providing": {
-        "Navigation": "*"
+        "Admin": "*",
+        "Navigation": "*",
+        "Organization": "*"
     },
     "load": [
         {
