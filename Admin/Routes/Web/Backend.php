@@ -17,9 +17,9 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/single.*$' => [
+    '^.*/finance/loan/profile.*$' => [
         [
-            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanSingle',
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanProfile',
             'verb'       => RouteVerb::GET,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
@@ -31,6 +31,39 @@ return [
     '^.*/finance/loan/create.*$' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::MODULE_NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::LOAN,
+            ],
+        ],
+    ],
+    '^.*/finance/loan/table.*$' => [
+        [
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanTable',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::MODULE_NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::LOAN,
+            ],
+        ],
+    ],
+    '^.*/finance/loan/entry/list.*$' => [
+        [
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanEntryList',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::MODULE_NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::LOAN,
+            ],
+        ],
+    ],
+    '^.*/finance/loan/entry/view.*$' => [
+        [
+            'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanEntryView',
             'verb'       => RouteVerb::GET,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
