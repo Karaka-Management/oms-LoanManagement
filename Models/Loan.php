@@ -14,6 +14,9 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Models;
 
+use Modules\SupplierManagement\Models\NullSupplier;
+use Modules\SupplierManagement\Models\Supplier;
+
 /**
  * Loan model.
  *
@@ -29,6 +32,8 @@ class Loan
     public string $name = '';
 
     public string $description = '';
+
+    public Supplier $loanProvider;
 
     public int $status = LoanStatus::DRAFT;
 
@@ -91,4 +96,12 @@ class Loan
     public array $taxes = [];
 
     public bool $hasManualTaxAmounts = false;
+
+    public function __construct()
+    {
+        $this->loanProvider = new NullSupplier();
+        $this->start = new \DateTime();
+        $this->end = $this->start->modify('+1 year');
+        $this->payout = $this->start;
+    }
 }

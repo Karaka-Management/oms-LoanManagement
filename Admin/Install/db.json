@@ -1,4 +1,54 @@
 {
+    "loanmgmt_cost_type": {
+        "name": "loanmgmt_cost_type",
+        "fields": {
+            "loanmgmt_cost_type_id": {
+                "name": "loanmgmt_cost_type_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "loanmgmt_cost_type_name": {
+                "name": "loanmgmt_cost_type_name",
+                "type": "VARCHAR(255)",
+                "null": false,
+                "unique": true
+            }
+        }
+    },
+    "loanmgmt_cost_type_l11n": {
+        "name": "loanmgmt_cost_type_l11n",
+        "fields": {
+            "loanmgmt_cost_type_l11n_id": {
+                "name": "loanmgmt_cost_type_l11n_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "loanmgmt_cost_type_l11n_title": {
+                "name": "loanmgmt_cost_type_l11n_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "loanmgmt_cost_type_l11n_type": {
+                "name": "loanmgmt_cost_type_l11n_type",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "loanmgmt_cost_type",
+                "foreignKey": "loanmgmt_cost_type_id"
+            },
+            "loanmgmt_cost_type_l11n_language": {
+                "name": "loanmgmt_cost_type_l11n_language",
+                "type": "VARCHAR(2)",
+                "default": null,
+                "null": true,
+                "foreignTable": "language",
+                "foreignKey": "language_639_1"
+            }
+        }
+    },
     "loanmgmt_loan": {
         "name": "loanmgmt_loan",
         "fields": {
@@ -9,6 +59,11 @@
                 "primary": true,
                 "autoincrement": true
             },
+            "loanmgmt_loan_start": {
+                "name": "loanmgmt_loan_start",
+                "type": "DATETIME",
+                "null": null
+            },
             "loanmgmt_loan_title": {
                 "name": "loanmgmt_loan_title",
                 "type": "VARCHAR(255)",
@@ -17,6 +72,59 @@
             "loanmgmt_loan_description": {
                 "name": "loanmgmt_loan_description",
                 "type": "TEXT",
+                "null": false
+            },
+            "loanmgmt_loan_payout_date": {
+                "name": "loanmgmt_loan_payout_date",
+                "type": "DATETIME",
+                "null": null
+            },
+            "loanmgmt_loan_amount": {
+                "name": "loanmgmt_loan_amount",
+                "type": "BIGINT",
+                "null": false
+            },
+            "loanmgmt_loan_disagio": {
+                "name": "loanmgmt_loan_disagio",
+                "type": "BIGINT",
+                "null": false
+            },
+            "loanmgmt_loan_provision": {
+                "description": "Bereitstellungsgebuehr",
+                "name": "loanmgmt_loan_provision",
+                "type": "BIGINT",
+                "null": false
+            },
+            "loanmgmt_loan_provision_rate": {
+                "description": "Bereitstellungsgebuehr",
+                "name": "loanmgmt_loan_provision_rate",
+                "type": "BIGINT",
+                "null": false
+            },
+            "loanmgmt_loan_interest_start": {
+                "name": "loanmgmt_loan_interest_start",
+                "type": "DATETIME",
+                "null": null
+            },
+            "loanmgmt_loan_interest_rate": {
+                "name": "loanmgmt_loan_interest_rate",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_interest_rate_post": {
+                "description": "Interest rate after binding period",
+                "name": "loanmgmt_loan_interest_rate_post",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_rate_binding": {
+                "name": "loanmgmt_loan_rate_binding",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_repayment_type": {
+                "name": "loanmgmt_loan_repayment_type",
+                "type": "TINYINT",
                 "null": false
             },
             "loanmgmt_loan_created_by": {

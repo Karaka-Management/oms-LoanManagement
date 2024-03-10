@@ -13,4 +13,5 @@
 declare(strict_types=1);
 
 return ['LoanManagement' => [
+    'Loans' => 'Loans'
 ]];

@@ -1,0 +1,51 @@
+[
+    {
+		"name": "disagio",
+		"l11n": {
+			"en": "Disagio",
+			"de": "Disagio"
+		}
+	},
+    {
+		"name": "interest",
+		"l11n": {
+			"en": "Interest",
+			"de": "Zinsen"
+		}
+	},
+    {
+		"name": "repayment",
+		"l11n": {
+			"en": "Repayment",
+			"de": "Tilgung"
+		}
+	},
+    {
+		"name": "unscheduled_repayment",
+		"l11n": {
+			"en": "Unscheduled repayment",
+			"de": "Sondertilgung"
+		}
+	},
+	{
+		"name": "commitment_fee",
+		"l11n": {
+			"en": "Commitment fee",
+			"de": "Bereitstellungsgebühr"
+		}
+	},
+	{
+		"name": "taxes",
+		"l11n": {
+			"en": "Taxes",
+			"de": "Steuern"
+		}
+	},
+	{
+		"name": "other",
+		"l11n": {
+			"en": "Others",
+			"de": "Sonstige"
+		}
+	}
+]
