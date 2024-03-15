@@ -97,11 +97,16 @@ class Loan
 
     public bool $hasManualTaxAmounts = false;
 
+    /**
+     * Constructor.
+     *
+     * @since 1.0.0
+     */
     public function __construct()
     {
         $this->loanProvider = new NullSupplier();
-        $this->start = new \DateTime();
-        $this->end = $this->start->modify('+1 year');
-        $this->payout = $this->start;
+        $this->start        = new \DateTime();
+        $this->end          = $this->start->modify('+1 year');
+        $this->payout       = $this->start;
     }
 }

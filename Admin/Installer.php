@@ -16,10 +16,10 @@ namespace Modules\LoanManagement\Admin;
 
 use phpOMS\Application\ApplicationAbstract;
 use phpOMS\Config\SettingsInterface;
-use phpOMS\Module\InstallerAbstract;
-use phpOMS\Module\ModuleInfo;
 use phpOMS\Message\Http\HttpRequest;
 use phpOMS\Message\Http\HttpResponse;
+use phpOMS\Module\InstallerAbstract;
+use phpOMS\Module\ModuleInfo;
 
 /**
  * Installer class.
