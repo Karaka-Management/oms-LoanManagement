@@ -62,7 +62,7 @@
             "loanmgmt_loan_start": {
                 "name": "loanmgmt_loan_start",
                 "type": "DATETIME",
-                "null": null
+                "null": true
             },
             "loanmgmt_loan_title": {
                 "name": "loanmgmt_loan_title",
@@ -77,7 +77,7 @@
             "loanmgmt_loan_payout_date": {
                 "name": "loanmgmt_loan_payout_date",
                 "type": "DATETIME",
-                "null": null
+                "null": true
             },
             "loanmgmt_loan_amount": {
                 "name": "loanmgmt_loan_amount",
@@ -104,7 +104,7 @@
             "loanmgmt_loan_interest_start": {
                 "name": "loanmgmt_loan_interest_start",
                 "type": "DATETIME",
-                "null": null
+                "null": true
             },
             "loanmgmt_loan_interest_rate": {
                 "name": "loanmgmt_loan_interest_rate",
