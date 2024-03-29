@@ -6,7 +6,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/finance/loan/list(\?.*$|$)' => [
+    '^/finance/loan/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanList',
             'verb'       => RouteVerb::GET,
@@ -17,7 +17,7 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/view(\?.*$|$)' => [
+    '^/finance/loan/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanView',
             'verb'       => RouteVerb::GET,
@@ -28,7 +28,7 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/create(\?.*$|$)' => [
+    '^/finance/loan/create(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanCreate',
             'verb'       => RouteVerb::GET,
@@ -39,7 +39,7 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/table(\?.*$|$)' => [
+    '^/finance/loan/table(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanTable',
             'verb'       => RouteVerb::GET,
@@ -50,7 +50,7 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/entry/list(\?.*$|$)' => [
+    '^/finance/loan/entry/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanEntryList',
             'verb'       => RouteVerb::GET,
@@ -61,7 +61,7 @@ return [
             ],
         ],
     ],
-    '^.*/finance/loan/entry/view(\?.*$|$)' => [
+    '^/finance/loan/entry/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanEntryView',
             'verb'       => RouteVerb::GET,
