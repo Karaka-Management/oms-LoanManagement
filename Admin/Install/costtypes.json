@@ -1,6 +1,17 @@
 [
+	{
+		"name": "loan",
+		"sign": 1,
+		"isLoan": true,
+		"l11n": {
+			"en": "Loan",
+			"de": "Darlehen"
+		}
+	},
     {
 		"name": "disagio",
+		"sign": -1,
+		"isLoan": true,
 		"l11n": {
 			"en": "Disagio",
 			"de": "Disagio"
@@ -8,6 +19,7 @@
 	},
     {
 		"name": "interest",
+		"sign": -1,
 		"l11n": {
 			"en": "Interest",
 			"de": "Zinsen"
@@ -15,6 +27,8 @@
 	},
     {
 		"name": "repayment",
+		"sign": -1,
+		"isLoan": true,
 		"l11n": {
 			"en": "Repayment",
 			"de": "Tilgung"
@@ -22,6 +36,8 @@
 	},
     {
 		"name": "unscheduled_repayment",
+		"sign": -1,
+		"isLoan": true,
 		"l11n": {
 			"en": "Unscheduled repayment",
 			"de": "Sondertilgung"
@@ -29,6 +45,7 @@
 	},
 	{
 		"name": "commitment_fee",
+		"sign": -1,
 		"l11n": {
 			"en": "Commitment fee",
 			"de": "Bereitstellungsgebühr"
@@ -36,6 +53,7 @@
 	},
 	{
 		"name": "taxes",
+		"sign": -1,
 		"l11n": {
 			"en": "Taxes",
 			"de": "Steuern"
@@ -43,6 +61,7 @@
 	},
 	{
 		"name": "other",
+		"sign": -1,
 		"l11n": {
 			"en": "Others",
 			"de": "Sonstige"

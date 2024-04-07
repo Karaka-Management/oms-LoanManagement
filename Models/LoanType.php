@@ -17,18 +17,18 @@ namespace Modules\LoanManagement\Models;
 use phpOMS\Stdlib\Base\Enum;
 
 /**
- * Loan status enum.
+ * Loan type enum.
  *
  * @package Modules\LoanManagement\Models
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
-abstract class LoanStatus extends Enum
+abstract class LoanType extends Enum
 {
-    public const DRAFT = 1;
+    public const AMORTIZED_LOAN = 1;
 
-    public const ACTIVE = 2;
+    public const DEFERRED_PAYMENT_LOAN = 2;
 
-    public const INACTIVE = 3;
+    public const BOND_LOAN = 3;
 }

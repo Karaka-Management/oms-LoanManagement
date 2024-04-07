@@ -14,6 +14,16 @@
                 "type": "VARCHAR(255)",
                 "null": false,
                 "unique": true
+            },
+            "loanmgmt_cost_type_sign": {
+                "name": "loanmgmt_cost_type_sign",
+                "type": "TINYINT(1)",
+                "null": false
+            },
+            "loanmgmt_cost_type_loan": {
+                "name": "loanmgmt_cost_type_loan",
+                "type": "TINYINT(1)",
+                "null": false
             }
         }
     },
@@ -59,13 +69,8 @@
                 "primary": true,
                 "autoincrement": true
             },
-            "loanmgmt_loan_start": {
-                "name": "loanmgmt_loan_start",
-                "type": "DATETIME",
-                "null": true
-            },
-            "loanmgmt_loan_title": {
-                "name": "loanmgmt_loan_title",
+            "loanmgmt_loan_name": {
+                "name": "loanmgmt_loan_name",
                 "type": "VARCHAR(255)",
                 "null": false
             },
@@ -74,58 +79,47 @@
                 "type": "TEXT",
                 "null": false
             },
-            "loanmgmt_loan_payout_date": {
-                "name": "loanmgmt_loan_payout_date",
+            "loanmgmt_loan_status": {
+                "name": "loanmgmt_loan_status",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_borrowing_rate": {
+                "name": "loanmgmt_loan_borrowing_rate",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_post_rate": {
+                "name": "loanmgmt_loan_post_rate",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_special_payment": {
+                "name": "loanmgmt_loan_special_payment",
+                "type": "INT",
+                "null": false
+            },
+            "loanmgmt_loan_supplier": {
+                "name": "loanmgmt_loan_supplier",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "suppliermgmt_supplier",
+                "foreignKey": "suppliermgmt_supplier_id"
+            },
+            "loanmgmt_loan_start": {
+                "name": "loanmgmt_loan_start",
                 "type": "DATETIME",
                 "null": true
             },
-            "loanmgmt_loan_amount": {
-                "name": "loanmgmt_loan_amount",
-                "type": "BIGINT",
-                "null": false
-            },
-            "loanmgmt_loan_disagio": {
-                "name": "loanmgmt_loan_disagio",
-                "type": "BIGINT",
-                "null": false
-            },
-            "loanmgmt_loan_provision": {
-                "description": "Bereitstellungsgebuehr",
-                "name": "loanmgmt_loan_provision",
-                "type": "BIGINT",
-                "null": false
-            },
-            "loanmgmt_loan_provision_rate": {
-                "description": "Bereitstellungsgebuehr",
-                "name": "loanmgmt_loan_provision_rate",
-                "type": "BIGINT",
-                "null": false
-            },
-            "loanmgmt_loan_interest_start": {
-                "name": "loanmgmt_loan_interest_start",
+            "loanmgmt_loan_end": {
+                "name": "loanmgmt_loan_end",
                 "type": "DATETIME",
                 "null": true
             },
-            "loanmgmt_loan_interest_rate": {
-                "name": "loanmgmt_loan_interest_rate",
-                "type": "INT",
-                "null": false
-            },
-            "loanmgmt_loan_interest_rate_post": {
-                "description": "Interest rate after binding period",
-                "name": "loanmgmt_loan_interest_rate_post",
-                "type": "INT",
-                "null": false
-            },
-            "loanmgmt_loan_rate_binding": {
-                "name": "loanmgmt_loan_rate_binding",
-                "type": "INT",
-                "null": false
-            },
-            "loanmgmt_loan_repayment_type": {
-                "name": "loanmgmt_loan_repayment_type",
-                "type": "TINYINT",
-                "null": false
+            "loanmgmt_loan_created_at": {
+                "name": "loanmgmt_loan_created_at",
+                "type": "DATETIME",
+                "null": true
             },
             "loanmgmt_loan_created_by": {
                 "name": "loanmgmt_loan_created_by",
@@ -141,6 +135,49 @@
                 "null": true,
                 "foreignTable": "unit",
                 "foreignKey": "unit_id"
+            }
+        }
+    },
+    "loanmgmt_loan_element": {
+        "name": "loanmgmt_loan_element",
+        "fields": {
+            "loanmgmt_loan_element_id": {
+                "name": "loanmgmt_loan_element_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "loanmgmt_loan_description": {
+                "name": "loanmgmt_loan_description",
+                "type": "TEXT",
+                "null": false
+            },
+            "loanmgmt_loan_element_amount": {
+                "name": "loanmgmt_loan_element_amount",
+                "type": "BIGINT",
+                "null": false
+            },
+            "loanmgmt_loan_element_date": {
+                "name": "loanmgmt_loan_element_date",
+                "type": "DATETIME",
+                "null": true
+            },
+            "loanmgmt_loan_element_type": {
+                "name": "loanmgmt_loan_element_type",
+                "type": "INT",
+                "default": null,
+                "null": true,
+                "foreignTable": "loanmgmt_cost_type",
+                "foreignKey": "loanmgmt_cost_type_id"
+            },
+            "loanmgmt_loan_element_loan": {
+                "name": "loanmgmt_loan_element_loan",
+                "type": "INT",
+                "default": null,
+                "null": true,
+                "foreignTable": "loanmgmt_loan",
+                "foreignKey": "loanmgmt_loan_id"
             }
         }
     }

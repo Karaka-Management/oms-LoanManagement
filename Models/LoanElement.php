@@ -14,21 +14,34 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Models;
 
-use phpOMS\Stdlib\Base\Enum;
+use phpOMS\Stdlib\Base\FloatInt;
 
 /**
- * Loan status enum.
+ * Loan model.
  *
  * @package Modules\LoanManagement\Models
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
-abstract class LoanStatus extends Enum
+class LoanElement
 {
-    public const DRAFT = 1;
+    public int $id = 0;
 
-    public const ACTIVE = 2;
+    public string $description = '';
 
-    public const INACTIVE = 3;
+    public FloatInt $amount;
+
+    public \DateTime $date;
+
+    public int $loan = 0;
+
+    public CostType $type;
+
+    public function __construct()
+    {
+        $this->amount = new FloatInt();
+        $this->date = new \DateTime();
+        $this->type = new NullCostType();
+    }
 }

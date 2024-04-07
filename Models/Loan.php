@@ -16,6 +16,7 @@ namespace Modules\LoanManagement\Models;
 
 use Modules\SupplierManagement\Models\NullSupplier;
 use Modules\SupplierManagement\Models\Supplier;
+use phpOMS\Stdlib\Base\FloatInt;
 
 /**
  * Loan model.
@@ -37,40 +38,10 @@ class Loan
 
     public int $status = LoanStatus::DRAFT;
 
-    public int $amount = 0;
+    public FloatInt $nominalBorrowingRate;
 
-    public int $acquisitionFee = 0;
-
-    public int $disagio = 0;
-
-    public int $nominalBorrowingRate = 0;
-
-    public int $startingRepaymentRate = 0;
-
-    public int $startingRepayment = 0;
-
-    // 0 = end of month
-    public int $dayOfRepayment = 0;
-
-    // monthly, quarterly, annually, end of duration
-    public int $interestInterval = 0;
-
-    public int $interestTaxRate = 0;
-
-    // monthly, quarterly, annually, end of duration
-    public int $repaymentInterval = 0;
-
-    // months
-    public int $duration = 0;
-
-    public int $repaymentFreeTime = 0;
-
-    // Either separate (during the repayment free time) or during the repayment time
-    public int $repaymentFreeInterest = 1;
-
-    public int $residualAmountAfterDuration = 0;
-
-    public int $annualSpecialPayment = 0;
+    // 0 = not possible
+    public FloatInt $interestRateAfterDuration;
 
     public bool $isSpecialPaymentAllowed = false;
 
@@ -78,24 +49,13 @@ class Loan
 
     public \DateTime $end;
 
-    public \DateTime $payout;
+    public \DateTimeImmutable $createdAt;
 
-    // 0 = not possible
-    public int $interestRateAfterDuration = 0;
+    public int $createdBy = 0;
 
-    // used to indicate if the interests/payments/taxes are manually adjusted
-    public bool $hasManualInterestAmounts = false;
+    public int $unit = 0;
 
-    public array $interests = [];
-
-    // in and out
-    public array $payments = [];
-
-    public bool $hasManualPaymentAmounts = false;
-
-    public array $taxes = [];
-
-    public bool $hasManualTaxAmounts = false;
+    public array $elements = [];
 
     /**
      * Constructor.
@@ -104,9 +64,13 @@ class Loan
      */
     public function __construct()
     {
+        $this->createdAt = new \DateTimeImmutable();
+
         $this->loanProvider = new NullSupplier();
         $this->start        = new \DateTime();
         $this->end          = $this->start->modify('+1 year');
-        $this->payout       = $this->start;
+
+        $this->nominalBorrowingRate = new FloatInt();
+        $this->interestRateAfterDuration = new FloatInt();
     }
 }

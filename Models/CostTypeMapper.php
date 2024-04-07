@@ -15,17 +15,16 @@ declare(strict_types=1);
 namespace Modules\LoanManagement\Models;
 
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
-use phpOMS\Localization\BaseStringL11nType;
 
 /**
- * Item mapper class.
+ * CostType mapper class.
  *
  * @package Modules\LoanManagement\Models
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  *
- * @template T of BaseStringL11nType
+ * @template T of CostType
  * @extends DataMapperFactory<T>
  */
 final class CostTypeMapper extends DataMapperFactory
@@ -38,7 +37,9 @@ final class CostTypeMapper extends DataMapperFactory
      */
     public const COLUMNS = [
         'loanmgmt_cost_type_id'   => ['name' => 'loanmgmt_cost_type_id',       'type' => 'int',    'internal' => 'id'],
-        'loanmgmt_cost_type_name' => ['name' => 'loanmgmt_cost_type_name',     'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
+        'loanmgmt_cost_type_name' => ['name' => 'loanmgmt_cost_type_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
+        'loanmgmt_cost_type_sign' => ['name' => 'loanmgmt_cost_type_sign',     'type' => 'int', 'internal' => 'sign'],
+        'loanmgmt_cost_type_loan' => ['name' => 'loanmgmt_cost_type_loan',     'type' => 'bool', 'internal' => 'isLoan'],
     ];
 
     /**
@@ -63,7 +64,7 @@ final class CostTypeMapper extends DataMapperFactory
      * @var class-string<T>
      * @since 1.0.0
      */
-    public const MODEL = BaseStringL11nType::class;
+    public const MODEL = CostType::class;
 
     /**
      * Primary table.

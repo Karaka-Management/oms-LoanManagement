@@ -57,21 +57,6 @@
                 "permission": { "permission": 2, "type": null, "element": null },
                 "parent": 1008301001,
                 "children": []
-            },
-            {
-                "id": 1008305001,
-                "pid": "/finance/loan",
-                "type": 3,
-                "subtype": 1,
-                "name": "Entries",
-                "uri": "{/base}/finance/loan/entry/list?{?}",
-                "target": "self",
-                "icon": null,
-                "order": 15,
-                "from": "LoanManagement",
-                "permission": { "permission": 2, "type": null, "element": null },
-                "parent": 1008301001,
-                "children": []
             }
         ]
     }

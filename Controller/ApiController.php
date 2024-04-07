@@ -14,14 +14,23 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Controller;
 
+use Modules\LoanManagement\Models\CostType;
 use Modules\LoanManagement\Models\CostTypeL11nMapper;
 use Modules\LoanManagement\Models\CostTypeMapper;
+use Modules\LoanManagement\Models\Loan;
+use Modules\LoanManagement\Models\LoanElement;
+use phpOMS\Business\Finance\Loan as FinanceLoan;
+use Modules\LoanManagement\Models\LoanMapper;
+use Modules\LoanManagement\Models\LoanStatus;
+use Modules\LoanManagement\Models\NullCostType;
+use Modules\SupplierManagement\Models\NullSupplier;
 use phpOMS\Localization\BaseStringL11n;
-use phpOMS\Localization\BaseStringL11nType;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
+use phpOMS\Stdlib\Base\FloatInt;
+use phpOMS\Stdlib\Base\SmartDateTime;
 
 /**
  * LoanManagement class.
@@ -34,7 +43,7 @@ use phpOMS\Message\ResponseAbstract;
 final class ApiController extends Controller
 {
     /**
-     * Api method to create tag
+     * Api method to create loan
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -48,10 +57,135 @@ final class ApiController extends Controller
      */
     public function apiLoanCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
+        if (!empty($val = $this->validateLoanCreate($request))) {
+            $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidCreateResponse($request, $response, $val);
+
+            return;
+        }
+
+        $costType = $this->createLoanFromRequest($request);
+        $this->createModel($request->header->account, $costType, LoanMapper::class, 'loan', $request->getOrigin());
+        $this->createStandardCreateResponse($request, $response, $costType);
     }
 
     /**
-     * Api method to create tag
+     * Validate cost type create request
+     *
+     * @param RequestAbstract $request Request
+     *
+     * @return array<string, bool>
+     *
+     * @since 1.0.0
+     */
+    private function validateLoanCreate(RequestAbstract $request) : array
+    {
+        $val = [];
+        if (($val['name'] = !$request->hasData('name'))
+            || ($val['supplier'] = !$request->hasData('supplier'))
+            || ($val['start'] = !$request->hasData('start'))
+            || ($val['duration'] = !$request->hasData('duration'))
+            || ($val['amount'] = !$request->hasData('amount'))
+            || ($val['interest_rate'] = !$request->hasData('interest_rate'))
+        ) {
+            return $val;
+        }
+
+        return [];
+    }
+
+    /**
+     * Method to create cost type from request.
+     *
+     * @param RequestAbstract $request Request
+     *
+     * @return Loan
+     *
+     * @since 1.0.0
+     */
+    private function createLoanFromRequest(RequestAbstract $request) : Loan
+    {
+        $loan = new Loan();
+
+        $loan->createdBy = $request->header->account;
+        $loan->name = $request->getDataString('name');
+        $loan->description = $request->getDataString('description');
+        $loan->loanProvider = new NullSupplier((int) $request->getDataInt('supplier'));
+        $loan->status = LoanStatus::tryFromValue($request->getData('status')) ?? LoanStatus::ACTIVE;
+        $loan->nominalBorrowingRate = new FloatInt($request->getDataString('interest_rate') ?? 0);
+        $loan->interestRateAfterDuration = new FloatInt($request->getDataString('post_interest_rate') ?? 0);
+        $loan->start = $request->getDataDateTime('start') ?? new \DateTime('now');
+        $loan->end = SmartDateTime::createFromDateTime($loan->start)->smartModify(0, (int) $request->getDataInt('duration'));
+        $loan->isSpecialPaymentAllowed = $request->getDataBool('special_payment_allowed') ?? false;
+        $loan->unit = $request->getDataInt('unit') ?? $this->app->unitId;
+
+        $paymentInterval = $request->getDataInt('payment_interval') ?? 12;
+
+        /** @var CostType[] $types */
+        $types = CostTypeMapper::getAll()->executeGetArray();
+
+        $loanType = new NullCostType();
+        $repaymentType = new NullCostType();
+        $interestType = new NullCostType();
+
+        foreach ($types as $type) {
+            if ($type->name === 'loan') {
+                $loanType = $type;
+            } elseif ($type->name === 'repayment') {
+                $repaymentType = $type;
+            } elseif ($type->name === 'interest') {
+                $interestType = $type;
+            }
+        }
+
+        // Loan
+        $element = new LoanElement();
+        $element->amount = new FloatInt($request->getDataString('amount') ?? 0);
+        $element->date = $loan->start;
+        $element->type = $loanType;
+
+        $loan->elements[] = $element;
+
+        $currentDate = SmartDateTime::createFromDateTime($loan->start);
+        $currentDate->smartModify(0, (int) (12 / $paymentInterval), -1);
+
+        // @feature Handle different loan types
+        $schedule = FinanceLoan::getAmortizationSchedule(
+            $element->amount->getNormalizedValue(),
+            $loan->nominalBorrowingRate->getNormalizedValue() / 100,
+            (int) $request->getDataInt('duration'),
+            $paymentInterval
+        );
+
+        foreach ($schedule as $idx => $e) {
+            if ($idx === 0) {
+                continue;
+            }
+
+            // Repayment
+            $element = new LoanElement();
+            $element->amount = new FloatInt($e['principal']);
+            $element->date = clone $currentDate;
+            $element->type = $repaymentType;
+
+            $loan->elements[] = $element;
+
+            // Interest
+            $element = new LoanElement();
+            $element->amount = new FloatInt($e['interest']);
+            $element->date = clone $currentDate;
+            $element->type = $interestType;
+
+            $loan->elements[] = $element;
+
+            $currentDate->smartModify(0, (int) (12 / $paymentInterval));
+        }
+
+        return $loan;
+    }
+
+    /**
+     * Api method to calculate loan timeline based on definitions
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -68,7 +202,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Api method to create tag
+     * Api method to create loan elements
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -85,7 +219,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Api method to create item cost type
+     * Api method to create loan cost type
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -112,7 +246,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Validate cost create request
+     * Validate cost type create request
      *
      * @param RequestAbstract $request Request
      *
@@ -133,17 +267,20 @@ final class ApiController extends Controller
     }
 
     /**
-     * Method to create cost from request.
+     * Method to create cost type from request.
      *
      * @param RequestAbstract $request Request
      *
-     * @return BaseStringL11nType
+     * @return CostType
      *
      * @since 1.0.0
      */
-    private function createCostTypeFromRequest(RequestAbstract $request) : BaseStringL11nType
+    private function createCostTypeFromRequest(RequestAbstract $request) : CostType
     {
-        $costType = new BaseStringL11nType($request->getDataString('name') ?? '');
+        $costType = new CostType();
+        $costType->name = $request->getDataString('name');
+        $costType->sign = $request->getDataInt('sign') ?? -1;
+        $costType->isLoan = $request->getDataBool('is_loan') ?? false;
         $costType->setL11n(
             $request->getDataString('title') ?? '',
             ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
@@ -153,7 +290,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Api method to create item cost l11n
+     * Api method to create loan cost l11n
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response

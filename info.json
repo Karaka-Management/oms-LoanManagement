@@ -22,8 +22,7 @@
     },
     "providing": {
         "Admin": "*",
-        "Navigation": "*",
-        "Organization": "*"
+        "Navigation": "*"
     },
     "load": [
         {

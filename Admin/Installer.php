@@ -83,6 +83,8 @@ final class Installer extends InstallerAbstract
             $request->header->account = 1;
             $request->setData('name', $type['name'] ?? '');
             $request->setData('title', \reset($type['l11n']));
+            $request->setData('sign', $type['sign'] ?? -1);
+            $request->setData('is_loan', $type['isLoan'] ?? false);
 
             $module->apiLoanCostTypeCreate($request, $response);
 
