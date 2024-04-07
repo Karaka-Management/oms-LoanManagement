@@ -63,7 +63,7 @@ class CostType implements \JsonSerializable
      * Set l11n
      *
      * @param string|BaseStringL11n $l11n Tag article l11n
-     * @param string                $lang  Language
+     * @param string                $lang Language
      *
      * @return void
      *
@@ -88,7 +88,7 @@ class CostType implements \JsonSerializable
     public function toArray() : array
     {
         return [
-            'id'    => $this->id,
+            'id'   => $this->id,
             'l11n' => $this->l11n,
         ];
     }

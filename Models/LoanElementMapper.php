@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Models;
 
-use Modules\SupplierManagement\Models\SupplierMapper;
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
@@ -37,12 +36,12 @@ final class LoanElementMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'loanmgmt_loan_element_id'   => ['name' => 'loanmgmt_loan_element_id',       'type' => 'int',    'internal' => 'id'],
+        'loanmgmt_loan_element_id'          => ['name' => 'loanmgmt_loan_element_id',       'type' => 'int',    'internal' => 'id'],
         'loanmgmt_loan_element_description' => ['name' => 'loanmgmt_loan_element_description',     'type' => 'string', 'internal' => 'description'],
-        'loanmgmt_loan_element_date' => ['name' => 'loanmgmt_loan_element_date',     'type' => 'DateTime', 'internal' => 'date'],
-        'loanmgmt_loan_element_type' => ['name' => 'loanmgmt_loan_element_type',     'type' => 'int', 'internal' => 'type'],
-        'loanmgmt_loan_element_loan' => ['name' => 'loanmgmt_loan_element_loan',     'type' => 'int', 'internal' => 'loan'],
-        'loanmgmt_loan_element_amount' => ['name' => 'loanmgmt_loan_element_amount',     'type' => 'Serializable', 'internal' => 'amount'],
+        'loanmgmt_loan_element_date'        => ['name' => 'loanmgmt_loan_element_date',     'type' => 'DateTime', 'internal' => 'date'],
+        'loanmgmt_loan_element_type'        => ['name' => 'loanmgmt_loan_element_type',     'type' => 'int', 'internal' => 'type'],
+        'loanmgmt_loan_element_loan'        => ['name' => 'loanmgmt_loan_element_loan',     'type' => 'int', 'internal' => 'loan'],
+        'loanmgmt_loan_element_amount'      => ['name' => 'loanmgmt_loan_element_amount',     'type' => 'Serializable', 'internal' => 'amount'],
     ];
 
     /**

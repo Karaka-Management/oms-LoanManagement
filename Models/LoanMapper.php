@@ -37,18 +37,18 @@ final class LoanMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'loanmgmt_loan_id'   => ['name' => 'loanmgmt_loan_id',       'type' => 'int',    'internal' => 'id'],
-        'loanmgmt_loan_name' => ['name' => 'loanmgmt_loan_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
-        'loanmgmt_loan_description' => ['name' => 'loanmgmt_loan_description',     'type' => 'string', 'internal' => 'description'],
-        'loanmgmt_loan_start' => ['name' => 'loanmgmt_loan_start',     'type' => 'DateTime', 'internal' => 'start'],
-        'loanmgmt_loan_end' => ['name' => 'loanmgmt_loan_end',     'type' => 'DateTime', 'internal' => 'end'],
-        'loanmgmt_loan_created_at' => ['name' => 'loanmgmt_loan_created_at',     'type' => 'DateTimeImmutable', 'internal' => 'createdAt'],
-        'loanmgmt_loan_created_by' => ['name' => 'loanmgmt_loan_created_by',     'type' => 'int', 'internal' => 'createdBy'],
-        'loanmgmt_loan_unit' => ['name' => 'loanmgmt_loan_unit',     'type' => 'int', 'internal' => 'unit'],
-        'loanmgmt_loan_supplier' => ['name' => 'loanmgmt_loan_supplier',     'type' => 'int', 'internal' => 'supplier'],
-        'loanmgmt_loan_status' => ['name' => 'loanmgmt_loan_status',     'type' => 'int', 'internal' => 'status'],
-        'loanmgmt_loan_borrowing_rate' => ['name' => 'loanmgmt_loan_borrowing_rate',     'type' => 'Serializable', 'internal' => 'nominalBorrowingRate'],
-        'loanmgmt_loan_post_rate' => ['name' => 'loanmgmt_loan_post_rate',     'type' => 'Serializable', 'internal' => 'interestRateAfterDuration'],
+        'loanmgmt_loan_id'              => ['name' => 'loanmgmt_loan_id',       'type' => 'int',    'internal' => 'id'],
+        'loanmgmt_loan_name'            => ['name' => 'loanmgmt_loan_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
+        'loanmgmt_loan_description'     => ['name' => 'loanmgmt_loan_description',     'type' => 'string', 'internal' => 'description'],
+        'loanmgmt_loan_start'           => ['name' => 'loanmgmt_loan_start',     'type' => 'DateTime', 'internal' => 'start'],
+        'loanmgmt_loan_end'             => ['name' => 'loanmgmt_loan_end',     'type' => 'DateTime', 'internal' => 'end'],
+        'loanmgmt_loan_created_at'      => ['name' => 'loanmgmt_loan_created_at',     'type' => 'DateTimeImmutable', 'internal' => 'createdAt'],
+        'loanmgmt_loan_created_by'      => ['name' => 'loanmgmt_loan_created_by',     'type' => 'int', 'internal' => 'createdBy'],
+        'loanmgmt_loan_unit'            => ['name' => 'loanmgmt_loan_unit',     'type' => 'int', 'internal' => 'unit'],
+        'loanmgmt_loan_supplier'        => ['name' => 'loanmgmt_loan_supplier',     'type' => 'int', 'internal' => 'supplier'],
+        'loanmgmt_loan_status'          => ['name' => 'loanmgmt_loan_status',     'type' => 'int', 'internal' => 'status'],
+        'loanmgmt_loan_borrowing_rate'  => ['name' => 'loanmgmt_loan_borrowing_rate',     'type' => 'Serializable', 'internal' => 'nominalBorrowingRate'],
+        'loanmgmt_loan_post_rate'       => ['name' => 'loanmgmt_loan_post_rate',     'type' => 'Serializable', 'internal' => 'interestRateAfterDuration'],
         'loanmgmt_loan_special_payment' => ['name' => 'loanmgmt_loan_special_payment',     'type' => 'bool', 'internal' => 'isSpecialPaymentAllowed'],
     ];
 

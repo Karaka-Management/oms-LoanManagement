@@ -10,7 +10,7 @@ return [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanList',
             'verb'       => RouteVerb::GET,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'   => PermissionType::READ,
@@ -22,7 +22,7 @@ return [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanView',
             'verb'       => RouteVerb::GET,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'   => PermissionType::READ,
@@ -34,7 +34,7 @@ return [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanCreate',
             'verb'       => RouteVerb::GET,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'   => PermissionType::CREATE,
@@ -46,7 +46,7 @@ return [
         [
             'dest'       => '\Modules\LoanManagement\Controller\BackendController:viewLoanTable',
             'verb'       => RouteVerb::GET,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => BackendController::MODULE_NAME,
                 'type'   => PermissionType::READ,

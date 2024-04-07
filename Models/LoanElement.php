@@ -41,7 +41,7 @@ class LoanElement
     public function __construct()
     {
         $this->amount = new FloatInt();
-        $this->date = new \DateTime();
-        $this->type = new NullCostType();
+        $this->date   = new \DateTime();
+        $this->type   = new NullCostType();
     }
 }

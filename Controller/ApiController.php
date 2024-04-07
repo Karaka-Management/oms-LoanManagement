@@ -19,11 +19,11 @@ use Modules\LoanManagement\Models\CostTypeL11nMapper;
 use Modules\LoanManagement\Models\CostTypeMapper;
 use Modules\LoanManagement\Models\Loan;
 use Modules\LoanManagement\Models\LoanElement;
-use phpOMS\Business\Finance\Loan as FinanceLoan;
 use Modules\LoanManagement\Models\LoanMapper;
 use Modules\LoanManagement\Models\LoanStatus;
 use Modules\LoanManagement\Models\NullCostType;
 use Modules\SupplierManagement\Models\NullSupplier;
+use phpOMS\Business\Finance\Loan as FinanceLoan;
 use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\Http\RequestStatusCode;
@@ -107,26 +107,26 @@ final class ApiController extends Controller
     {
         $loan = new Loan();
 
-        $loan->createdBy = $request->header->account;
-        $loan->name = $request->getDataString('name');
-        $loan->description = $request->getDataString('description');
-        $loan->loanProvider = new NullSupplier((int) $request->getDataInt('supplier'));
-        $loan->status = LoanStatus::tryFromValue($request->getData('status')) ?? LoanStatus::ACTIVE;
-        $loan->nominalBorrowingRate = new FloatInt($request->getDataString('interest_rate') ?? 0);
+        $loan->createdBy                 = $request->header->account;
+        $loan->name                      = $request->getDataString('name');
+        $loan->description               = $request->getDataString('description');
+        $loan->loanProvider              = new NullSupplier((int) $request->getDataInt('supplier'));
+        $loan->status                    = LoanStatus::tryFromValue($request->getData('status')) ?? LoanStatus::ACTIVE;
+        $loan->nominalBorrowingRate      = new FloatInt($request->getDataString('interest_rate') ?? 0);
         $loan->interestRateAfterDuration = new FloatInt($request->getDataString('post_interest_rate') ?? 0);
-        $loan->start = $request->getDataDateTime('start') ?? new \DateTime('now');
-        $loan->end = SmartDateTime::createFromDateTime($loan->start)->smartModify(0, (int) $request->getDataInt('duration'));
-        $loan->isSpecialPaymentAllowed = $request->getDataBool('special_payment_allowed') ?? false;
-        $loan->unit = $request->getDataInt('unit') ?? $this->app->unitId;
+        $loan->start                     = $request->getDataDateTime('start') ?? new \DateTime('now');
+        $loan->end                       = SmartDateTime::createFromDateTime($loan->start)->smartModify(0, (int) $request->getDataInt('duration'));
+        $loan->isSpecialPaymentAllowed   = $request->getDataBool('special_payment_allowed') ?? false;
+        $loan->unit                      = $request->getDataInt('unit') ?? $this->app->unitId;
 
         $paymentInterval = $request->getDataInt('payment_interval') ?? 12;
 
         /** @var CostType[] $types */
         $types = CostTypeMapper::getAll()->executeGetArray();
 
-        $loanType = new NullCostType();
+        $loanType      = new NullCostType();
         $repaymentType = new NullCostType();
-        $interestType = new NullCostType();
+        $interestType  = new NullCostType();
 
         foreach ($types as $type) {
             if ($type->name === 'loan') {
@@ -139,10 +139,10 @@ final class ApiController extends Controller
         }
 
         // Loan
-        $element = new LoanElement();
+        $element         = new LoanElement();
         $element->amount = new FloatInt($request->getDataString('amount') ?? 0);
-        $element->date = $loan->start;
-        $element->type = $loanType;
+        $element->date   = $loan->start;
+        $element->type   = $loanType;
 
         $loan->elements[] = $element;
 
@@ -163,18 +163,18 @@ final class ApiController extends Controller
             }
 
             // Repayment
-            $element = new LoanElement();
+            $element         = new LoanElement();
             $element->amount = new FloatInt($e['principal']);
-            $element->date = clone $currentDate;
-            $element->type = $repaymentType;
+            $element->date   = clone $currentDate;
+            $element->type   = $repaymentType;
 
             $loan->elements[] = $element;
 
             // Interest
-            $element = new LoanElement();
+            $element         = new LoanElement();
             $element->amount = new FloatInt($e['interest']);
-            $element->date = clone $currentDate;
-            $element->type = $interestType;
+            $element->date   = clone $currentDate;
+            $element->type   = $interestType;
 
             $loan->elements[] = $element;
 
@@ -277,9 +277,9 @@ final class ApiController extends Controller
      */
     private function createCostTypeFromRequest(RequestAbstract $request) : CostType
     {
-        $costType = new CostType();
-        $costType->name = $request->getDataString('name');
-        $costType->sign = $request->getDataInt('sign') ?? -1;
+        $costType         = new CostType();
+        $costType->name   = $request->getDataString('name');
+        $costType->sign   = $request->getDataInt('sign') ?? -1;
         $costType->isLoan = $request->getDataBool('is_loan') ?? false;
         $costType->setL11n(
             $request->getDataString('title') ?? '',

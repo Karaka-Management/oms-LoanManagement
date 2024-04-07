@@ -70,7 +70,7 @@ class Loan
         $this->start        = new \DateTime();
         $this->end          = $this->start->modify('+1 year');
 
-        $this->nominalBorrowingRate = new FloatInt();
+        $this->nominalBorrowingRate      = new FloatInt();
         $this->interestRateAfterDuration = new FloatInt();
     }
 }
