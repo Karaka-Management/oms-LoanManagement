@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\LoanManagement\Controller;
 
+use Modules\LoanManagement\Models\LoanMapper;
 use phpOMS\Contract\RenderableInterface;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
@@ -47,6 +48,9 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/LoanManagement/Theme/Backend/loan-list');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1008301001, $request, $response);
 
+        $view->data['loans'] = LoanMapper::getAll()
+            ->executeGetArray();
+
         return $view;
     }
 
@@ -65,8 +69,35 @@ final class BackendController extends Controller
     public function viewLoanCreate(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
-        $view->setTemplate('/Modules/LoanManagement/Theme/Backend/loan-list');
+        $view->setTemplate('/Modules/LoanManagement/Theme/Backend/loan-view');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1008301001, $request, $response);
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewLoanView(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+        $view->setTemplate('/Modules/LoanManagement/Theme/Backend/loan-view');
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1008301001, $request, $response);
+
+        $view->data['loan'] = LoanMapper::get()
+            ->with('loanProvider')
+            ->with('loanProvider/account')
+            ->where('id', (int) $request->getData('id'))
+            ->execute();
 
         return $view;
     }

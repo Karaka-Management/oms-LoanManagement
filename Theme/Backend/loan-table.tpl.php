@@ -16,36 +16,12 @@ echo $this->data['nav']->render();
 
 $length = \max(12, 12);
 ?>
-
 <div class="row">
     <div class="col-xs-12">
         <section class="portlet">
-            <div class="portlet-head"><?= $this->getHtml('Loans'); ?><i class="g-icon download btn end-xs">download</i></div>
-            <div class="slider">
-            <table id="iVehicleList" class="default sticky">
-                <thead>
-                <tr>
-                    <td>Loan
-                    <td>
-                <?php for ($i = 0; $i < $length; ++$i) : ?>
-                    <td>
-                <?php endfor; ?>
-                <tbody>
-                    <tr>
-                        <td>Test
-                        <td><span>Interest</span><br><span>Other costs</span><br><span>Repayment</span><br><span>Payout</span>
-                        <?php for ($i = 0; $i < $length; ++$i) : ?>
-                            <td>
-                        <?php endfor; ?>
-                    <tr>
-                        <td>Test
-                        <td><span>Interest</span><br><span>Other costs</span><br><span>Repayment</span><br><span>Payout</span>
-                        <?php for ($i = 0; $i < $length; ++$i) : ?>
-                            <td>
-                        <?php endfor; ?>
-                    <tr>
-                        <td>Test
-                        <td><span>Interest</span><br><span>Other costs</span><br><span>Repayment</span><br><span>Payout</span>
-                        <?php for ($i = 0; $i < $length; ++$i) : ?>
-                            <td>
-                        <?php endfor; ?>
+            <div class="portlet-body">
+                <img height="100%" width="100%" src="Web/Backend/img/under_construction.svg">
+            </div>
+        </section>
+    </div>
+</div>
