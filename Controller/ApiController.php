@@ -108,10 +108,10 @@ final class ApiController extends Controller
         $loan = new Loan();
 
         $loan->createdBy                 = $request->header->account;
-        $loan->name                      = $request->getDataString('name');
-        $loan->description               = $request->getDataString('description');
+        $loan->name                      = $request->getDataString('name') ?? '';
+        $loan->description               = $request->getDataString('description') ?? '';
         $loan->loanProvider              = new NullSupplier((int) $request->getDataInt('supplier'));
-        $loan->status                    = LoanStatus::tryFromValue($request->getData('status')) ?? LoanStatus::ACTIVE;
+        $loan->status                    = LoanStatus::tryFromValue($request->getDataInt('status')) ?? LoanStatus::ACTIVE;
         $loan->nominalBorrowingRate      = new FloatInt($request->getDataString('interest_rate') ?? 0);
         $loan->interestRateAfterDuration = new FloatInt($request->getDataString('post_interest_rate') ?? 0);
         $loan->start                     = $request->getDataDateTime('start') ?? new \DateTime('now');
@@ -278,7 +278,7 @@ final class ApiController extends Controller
     private function createCostTypeFromRequest(RequestAbstract $request) : CostType
     {
         $costType         = new CostType();
-        $costType->name   = $request->getDataString('name');
+        $costType->name   = $request->getDataString('name') ?? '';
         $costType->sign   = $request->getDataInt('sign') ?? -1;
         $costType->isLoan = $request->getDataBool('is_loan') ?? false;
         $costType->setL11n(
