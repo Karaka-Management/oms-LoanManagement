@@ -96,7 +96,7 @@
             },
             "loanmgmt_loan_special_payment": {
                 "name": "loanmgmt_loan_special_payment",
-                "type": "INT",
+                "type": "TINYINT(1)",
                 "null": false
             },
             "loanmgmt_loan_supplier": {
