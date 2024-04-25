@@ -71,7 +71,7 @@ final class LoanElementMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const TABLE = 'loanmgmt_loan';
+    public const TABLE = 'loanmgmt_loan_element';
 
     /**
      * Primary field name.
