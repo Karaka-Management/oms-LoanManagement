@@ -148,8 +148,8 @@
                 "primary": true,
                 "autoincrement": true
             },
-            "loanmgmt_loan_description": {
-                "name": "loanmgmt_loan_description",
+            "loanmgmt_loan_element_description": {
+                "name": "loanmgmt_loan_element_description",
                 "type": "TEXT",
                 "null": false
             },
