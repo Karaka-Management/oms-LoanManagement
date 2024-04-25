@@ -45,7 +45,7 @@ final class LoanMapper extends DataMapperFactory
         'loanmgmt_loan_created_at'      => ['name' => 'loanmgmt_loan_created_at',     'type' => 'DateTimeImmutable', 'internal' => 'createdAt'],
         'loanmgmt_loan_created_by'      => ['name' => 'loanmgmt_loan_created_by',     'type' => 'int', 'internal' => 'createdBy'],
         'loanmgmt_loan_unit'            => ['name' => 'loanmgmt_loan_unit',     'type' => 'int', 'internal' => 'unit'],
-        'loanmgmt_loan_supplier'        => ['name' => 'loanmgmt_loan_supplier',     'type' => 'int', 'internal' => 'supplier'],
+        'loanmgmt_loan_supplier'        => ['name' => 'loanmgmt_loan_supplier',     'type' => 'int', 'internal' => 'loanProvider'],
         'loanmgmt_loan_status'          => ['name' => 'loanmgmt_loan_status',     'type' => 'int', 'internal' => 'status'],
         'loanmgmt_loan_borrowing_rate'  => ['name' => 'loanmgmt_loan_borrowing_rate',     'type' => 'Serializable', 'internal' => 'nominalBorrowingRate'],
         'loanmgmt_loan_post_rate'       => ['name' => 'loanmgmt_loan_post_rate',     'type' => 'Serializable', 'internal' => 'interestRateAfterDuration'],
@@ -59,7 +59,7 @@ final class LoanMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const OWNS_ONE = [
-        'supplier' => [
+        'loanProvider' => [
             'mapper'   => SupplierMapper::class,
             'external' => 'loanmgmt_loan_supplier',
         ],
