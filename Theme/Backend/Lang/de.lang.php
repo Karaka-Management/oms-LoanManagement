@@ -13,12 +13,12 @@
 declare(strict_types=1);
 
 return ['LoanManagement' => [
-    'Loans' => 'Darlehen',
-    'Loan' => 'Darlehen',
-    'Name' => 'Name',
+    'Loans'       => 'Darlehen',
+    'Loan'        => 'Darlehen',
+    'Name'        => 'Name',
     'Description' => 'Beschreibung',
-    'Supplier' => 'Anbieter',
-    'Start' => 'Start',
-    'End' => 'Ende',
-    'Rate%' => 'Zinsen %',
+    'Supplier'    => 'Anbieter',
+    'Start'       => 'Start',
+    'End'         => 'Ende',
+    'Rate%'       => 'Zinsen %',
 ]];

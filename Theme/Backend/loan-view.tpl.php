@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 use Modules\LoanManagement\Models\NullLoan;
 
-$loan = $this->data['loan'] ?? new NullLoan();
+$loan  = $this->data['loan'] ?? new NullLoan();
 $isNew = $loan->id === 0;
 
 echo $this->data['nav']->render(); ?>
