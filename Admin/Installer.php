@@ -82,7 +82,7 @@ final class Installer extends InstallerAbstract
 
             $request->header->account = 1;
             $request->setData('name', $type['name'] ?? '');
-            $request->setData('title', \reset($type['l11n']));
+            $request->setData('content', \reset($type['l11n']));
             $request->setData('sign', $type['sign'] ?? -1);
             $request->setData('is_loan', $type['isLoan'] ?? false);
 
@@ -108,9 +108,9 @@ final class Installer extends InstallerAbstract
                 $request  = new HttpRequest();
 
                 $request->header->account = 1;
-                $request->setData('title', $l11n);
+                $request->setData('content', $l11n);
                 $request->setData('language', $language);
-                $request->setData('type', $costType[$type['name']]['id']);
+                $request->setData('ref', $costType[$type['name']]['id']);
 
                 $module->apiLoanCostTypeL11nCreate($request, $response);
             }
