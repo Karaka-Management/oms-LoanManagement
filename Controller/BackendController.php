@@ -96,7 +96,7 @@ final class BackendController extends Controller
         $view->data['loan'] = LoanMapper::get()
             ->with('loanProvider')
             ->with('loanProvider/account')
-            ->where('id', (int) $request->getData('id'))
+            ->where('id', $request->getDataInt('id') ?? 0)
             ->execute();
 
         return $view;
